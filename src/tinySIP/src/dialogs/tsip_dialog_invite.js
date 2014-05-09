@@ -1368,6 +1368,9 @@ function x0000_Any_2_Trying_X_shutdown(ao_args) {
         return o_dialog.send_bye();
 	}
     else if (o_dialog.e_state == tsip_dialog_state_e.EARLY) {
+        if (!o_dialog.o_last_oInvite && o_dialog.o_last_iInvite) {
+            return o_dialog.send_bye();
+        }
         return o_dialog.send_cancel();
 	}
 }
